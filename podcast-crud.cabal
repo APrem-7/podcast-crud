@@ -53,7 +53,8 @@ common warnings
 library
     import:           warnings
     hs-source-dirs:   src
-    exposed-modules:  Domain.Types.Entry
+    exposed-modules:  Domain.Types.Entry,
+                      Domain.Action.Entry
     build-depends:    base ^>=4.20.2.0,
                       text,
                       time
@@ -90,4 +91,5 @@ test-suite podcast-crud-test
     main-is:          Spec.hs
     build-depends:    base ^>=4.20.2.0,
                       podcast-crud,
+                      time,
                       hspec

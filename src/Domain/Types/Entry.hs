@@ -5,10 +5,10 @@ import Data.Text (Text)
 import Data.Time (Day)
 
 data MediaType = Podcast | Youtube | Spiritual
-    deriving (Show,Eq)
-    
+    deriving (Show, Eq)
+
 data Entry = Entry
-  { entryId         :: Int          -- your call, see below
+  { entryId         :: Int
   , title           :: Text
   , mediaType       :: MediaType
   , source          :: Text         -- show or channel name
@@ -19,4 +19,30 @@ data Entry = Entry
   , tags            :: [Text]
   , notionPageId    :: Maybe Text   -- Nothing until synced
   }
+  deriving (Show, Eq)
+
+-- | What the user supplies when creating an entry. The id is assigned by
+-- 'Domain.Action.Entry.addEntry' and the Notion page id is set after syncing.
+data NewEntry = NewEntry
+  { newTitle           :: Text
+  , newMediaType       :: MediaType
+  , newSource          :: Text
+  , newUrl             :: Maybe Text
+  , newConsumedOn      :: Day
+  , newSummary         :: Text
+  , newInitialThoughts :: Text
+  , newTags            :: [Text]
+  }
+  deriving (Show, Eq)
+
+-- | 'Nothing' means "don't filter on this".
+data EntryFilter = EntryFilter
+  { filterMediaType :: Maybe MediaType
+  , filterTag       :: Maybe Text
+  }
+  deriving (Show, Eq)
+
+data EntryError
+  = EntryNotFound Int
+  | EmptyTitle
   deriving (Show, Eq)
