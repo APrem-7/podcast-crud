@@ -1,0 +1,28 @@
+# Cabal / GHC
+dist-newstyle/
+.ghc.environment.*
+*.hi
+*.o
+*.dyn_hi
+*.dyn_o
+cabal.project.local*
+
+# Secrets (Notion token, DB credentials)
+.env
+.env.*
+*.local
+
+# Claude Code personal files
+CLAUDE.local.md
+.claude/settings.local.json
+
+# Nix / direnv (Milestone 7)
+.direnv/
+result
+result-*
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+.hls/
