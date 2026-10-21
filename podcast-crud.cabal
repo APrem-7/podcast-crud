@@ -50,6 +50,15 @@ extra-doc-files:    CHANGELOG.md
 common warnings
     ghc-options: -Wall
 
+library
+    import:           warnings
+    hs-source-dirs:   src
+    exposed-modules:  Domain.Types.Entry
+    build-depends:    base ^>=4.20.2.0,
+                      text,
+                      time
+    default-language: Haskell2010
+
 executable podcast-crud
     -- Import common warning flags.
     import:           warnings
@@ -64,7 +73,8 @@ executable podcast-crud
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.20.2.0
+    build-depends:    base ^>=4.20.2.0,
+                      podcast-crud
 
     -- Directories containing source files.
     hs-source-dirs:   app
@@ -79,4 +89,5 @@ test-suite podcast-crud-test
     hs-source-dirs:   test
     main-is:          Spec.hs
     build-depends:    base ^>=4.20.2.0,
+                      podcast-crud,
                       hspec
